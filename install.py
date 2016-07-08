@@ -12,7 +12,7 @@ chdir(cur)
 
 home = environ['HOME']
 
-sd_root = join(home, 'series-downloader')
+sd_root = join(home, '.NB-series-downloader')
 
 if not isdir(sd_root):
 	mkdir(sd_root)
