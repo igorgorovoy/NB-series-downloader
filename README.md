@@ -1,4 +1,4 @@
-##Сериалокачалка на python3 для macOS
+##Сериалокачалка на python3 для macOS с поддержкой расширений
 Зависимости:
 * [python3](https://www.python.org/download/releases/3.0/)
 * [terminal-notifier](https://github.com/julienXX/terminal-notifier) опционально
@@ -30,6 +30,6 @@ Python библиотеки:
 Для обоих **нужна авторизация**.
 
 * Lostfilm требует uid и pass из cookies + usess из профиля пользователя на сайте.
-* Newstudio требует логин и пароль, которые подставятся в rss-ленту для загрузки.
+* Newstudio требует логин и пароль, которые подставятся в ссылки в rss-ленте для загрузки.
 
 Укажите их в соответствующих файлах перед тем как запускать **install.py**.
