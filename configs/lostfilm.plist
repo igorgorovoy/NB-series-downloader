@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>excluding</key>
+	<array>
+		<string>сезон полностью</string>
+	</array>
+	<key>old_links</key>
+	<array>
+	</array>
+	<key>quality</key>
+	<string>mp4</string>
+	<key>subscriptions</key>
+	<array>
+		<string>Флэш</string>
+		<string>Элементарно</string>
+		<string>Черный список</string>
+		<string>Мистер робот</string>
+		<string>Легенды завтрашнего дня</string>
+		<string>Агенты Щ.И.Т.</string>
+		<string>Уэйуорд Пайнс</string>
+		<string>Готэм</string>
+		<string>Сверхъестественное</string>
+		<string>Сотня</string>
+		<string>Стрела</string>
+	</array>
+</dict>
+</plist>
