@@ -1,4 +1,7 @@
 ##Сериалокачалка на python3 для macOS с поддержкой расширений
+
+Подробное описание можно найти [на Хабре](https://habrahabr.ru/post/304770/).
+
 Зависимости:
 * [python3](https://www.python.org/download/releases/3.0/)
 * [terminal-notifier](https://github.com/julienXX/terminal-notifier) опционально
