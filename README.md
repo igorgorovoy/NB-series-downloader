@@ -18,16 +18,16 @@ Python библиотеки:
 
 ```pip3 install beautifulsoup4 requests```
 
-В корне проекта есть файл install.py, который сделает это все автоматически.
+В корне проекта есть файл **install.py**, который сделает это все автоматически.
 
 А так же:
-* Переместит файлы проекта в ~/.NB-series-downloader
-* Запишет файл автозапуска в ~/Library/LaunchAgents/series_downloader.plist
+* Переместит файлы проекта в *~/.NB-series-downloader*
+* Запишет файл автозапуска в *~/Library/LaunchAgents/series_downloader.plist*
 * Переместит в корзину себя вместе с папкой клонированного репозитория
 
-В папке плагинов уже имеются два расширения - для lostfilm.tv и для newstudio.tv.
+В папке плагинов уже имеются два расширения - для [lostfilm.tv](http://lostfilm.tv) и для [newstudio.tv](http://newstudio.tv).
 
-Для обоих нужна авторизация.
+Для обоих **нужна авторизация**.
 
 * Lostfilm требует uid и pass из cookies + usess из профиля пользователя на сайте.
 * Newstudio требует логин и пароль, которые подставятся в rss-ленту для загрузки.
