@@ -70,7 +70,7 @@ class downloader:
 			if self.notifier: self.__notify(series, episode if episode else number, 'Загрузка была выполнена ранее', _id = _id)
 		remove(tfile)
 		
-	def download(self, episodes, headers={}, cookies={}):
+	def download(self, episodes, cookies={}):
 		for quality, series, episode, number, link, extension in [(s['quality'], s['series'], 
 		s['episode'], '%s эпизод %s сезона'%(int(s['episode_number']), int(s['series_number'])), s['link'], 
 		s['extension']) for s in episodes]:
@@ -87,11 +87,11 @@ class downloader:
 				#создаем случайный id для уведомлений
 				if self.notifier: _id = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(5))
 				if extension.lower()=='torrent':
-					open(_file, 'wb').write(self.session.get(link, cookies=cookies, headers=headers).content)
+					open(_file, 'wb').write(self.session.get(link, cookies=cookies).content)
 					self.download_torrent(_file, series, episode, number, _id)
 				else:
 					if self.notifier: self.__notify(series, episode if episode else number, 'Загрузка начата', _id = _id)
-					open(_file, 'wb').write(self.session.get(link, cookies=cookies, headers=headers).content)
+					open(_file, 'wb').write(self.session.get(link, cookies=cookies).content)
 				if self.notifier: self.__notify(series, episode if episode else number, 'Загрузка закончена', _id = _id)
 				chdir('..')
 		self.settings.old_links = [s['link'] for s in episodes]
