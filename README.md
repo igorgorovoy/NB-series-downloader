@@ -28,11 +28,16 @@ Python библиотеки:
 * Запишет файл автозапуска в *~/Library/LaunchAgents/series_downloader.plist*
 * Переместит в корзину себя вместе с папкой клонированного репозитория
 
-В папке плагинов уже имеются два расширения - для [lostfilm.tv](http://lostfilm.tv) и для [newstudio.tv](http://newstudio.tv).
+В папке плагинов уже имеются четыре расширения:
+1. [lostfilm.tv](http://lostfilm.tv)
+2. [newstudio.tv](http://newstudio.tv)
+3. [baibako.tv](http://baibako.tv)
+4. [coldfilm.ru](http://coldfilm.ru)
 
-Для обоих **нужна авторизация**.
+Для трех из них **нужна авторизация**.
 
 * Lostfilm требует uid и pass из cookies + usess из профиля пользователя на сайте.
 * Newstudio требует логин и пароль, которые подставятся в ссылки в rss-ленте для загрузки.
+* Baibako требует некий passkey, который можно получить, запросив rss-ленту у них на сайте.
 
 Укажите их в соответствующих файлах перед тем как запускать **install.py**.
