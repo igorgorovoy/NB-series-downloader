@@ -29,6 +29,7 @@ Python библиотеки:
 * Переместит в корзину себя вместе с папкой клонированного репозитория
 
 В папке плагинов уже имеются четыре расширения:
+
 1. [lostfilm.tv](http://lostfilm.tv)
 2. [newstudio.tv](http://newstudio.tv)
 3. [baibako.tv](http://baibako.tv)
