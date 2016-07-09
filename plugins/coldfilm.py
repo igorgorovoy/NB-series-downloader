@@ -10,7 +10,7 @@ class coldfilm(downloader):
 			return 
 		data = []
 		for t, link in rss:
-			s = search('(.*) (\d+) сезон .*(\d) серия', aa.text)
+			s = search('(.*) (\d+) сезон .*(\d) серия', t)
 			if s:
 				series, sn, en = s.groups(1)
 			else:
