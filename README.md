@@ -3,6 +3,7 @@
 Подробное описание можно найти [на Хабре](https://habrahabr.ru/post/304770/).
 
 Зависимости:
+
 * [python3](https://www.python.org/download/releases/3.0/)
 * [terminal-notifier](https://github.com/julienXX/terminal-notifier) опционально
 * [aria2c](https://aria2.github.io) для загрузки с торрентов
@@ -24,6 +25,7 @@ Python библиотеки:
 В корне проекта есть файл **install.py**, который сделает это все автоматически.
 
 А так же:
+
 * Переместит файлы проекта в *~/.NB-series-downloader*
 * Запишет файл автозапуска в *~/Library/LaunchAgents/series_downloader.plist*
 * Переместит в корзину себя вместе с папкой клонированного репозитория
