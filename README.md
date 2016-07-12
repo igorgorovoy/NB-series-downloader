@@ -18,9 +18,9 @@ Python библиотеки:
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/), парсинг сайтов
 * [requests](http://docs.python-requests.org/en/master/), http-запросы
 
-Установить можно следующим образом:
+Установить можно из файла зависимостей:
 
-```pip3 install beautifulsoup4 requests```
+```pip3 install -r requirements.txt ```
 
 В корне проекта есть файл **install.py**, который сделает это все автоматически.
 
