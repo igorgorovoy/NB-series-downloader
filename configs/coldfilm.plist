@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>excluding</key>
+	<array>
+		<string></string>
+	</array>
+	<key>old_links</key>
+	<array>
+	</array>
+	<key>quality</key>
+	<string>720p</string>
+	<key>subscriptions</key>
+	<array>
+		<string>Кремниевая долина</string>
+	</array>
+</dict>
+</plist>
