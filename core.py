@@ -1,8 +1,8 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
-from os import mkdir, chdir, remove, listdir
+from os import mkdir, chdir, remove, listdir, environ
 from os.path import join as pathjoin, isdir, isfile, abspath, dirname
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError
 from plistlib import readPlist, writePlist
 import random, string
 from parser import session
@@ -20,7 +20,7 @@ class downloader:
 		self.plugins_dir = pathjoin(self.root_dir, 'plugins')
 		self.configs_dir = pathjoin(self.root_dir, 'configs')
 		self.icons_dir = pathjoin(self.root_dir, 'icons')
-		self.series_dir = pathjoin(self.root_dir, 'Series')
+		self.series_dir = pathjoin(environ['HOME'], 'Movies', 'Сериалы')
 		self.name = self.__class__.__name__
 		chdir(self.configs_dir)
 		config = '%s.plist'%self.name
@@ -59,16 +59,14 @@ class downloader:
 		return site
 		
 	def download_torrent(self, tfile, series, episode, number, _id):
-		ext = list(filter(lambda x: x.startswith('  1|./'), 
-		check_output(['aria2c', '--show-files', tfile])
-		.decode('utf-8').splitlines()))[0].split('.')[-1]
-		filename = '%s[%s].%s'% (episode, number, ext) if episode else '%s.%s'%(number, ext)
-		if not isfile(filename):
-			if self.notifier: self.__notify(series, episode if episode else number, 'Загрузка начата', _id = _id)
+		if self.notifier: self.__notify(series, episode if episode else number, 'Загрузка начата', _id = _id)
+		try:
 			check_output(['aria2c', tfile, '--seed-time=0'])
-		else: 
-			if self.notifier: self.__notify(series, episode if episode else number, 'Загрузка была выполнена ранее', _id = _id)
-		remove(tfile)
+			remove(tfile)
+			return True
+		except CalledProcessError:
+			self.__notify(series, 'Torrent', 'Загрузка не удалась', _id = _id)
+			return False
 		
 	def download(self, episodes, cookies={}):
 		for quality, series, episode, number, link, extension in [(s['quality'], s['series'], 
@@ -88,7 +86,8 @@ class downloader:
 				if self.notifier: _id = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(5))
 				if extension.lower()=='torrent':
 					open(_file, 'wb').write(self.session.get(link, cookies=cookies).content)
-					self.download_torrent(_file, series, episode, number, _id)
+					if not self.download_torrent(_file, series, episode, number, _id):
+						return
 				else:
 					if self.notifier: self.__notify(series, episode if episode else number, 'Загрузка начата', _id = _id)
 					open(_file, 'wb').write(self.session.get(link, cookies=cookies).content)
