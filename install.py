@@ -8,7 +8,6 @@ system('pip3 install beautifulsoup4 requests')
 
 
 cur = dirname(abspath(__file__))
-chdir(cur)
 
 home = environ['HOME']
 
@@ -60,7 +59,7 @@ open(plist_path, 'wt').write(plist)
 
 system('launchctl load "%s"'%plist_path)
 
-for i in [join(cur, x) for x in listdir('.') if not x.startswith('.') and not x=='installer.py' and not x=='__pycache__']:
-	print('%s => %s'%(i, join(sd_root, split(i)[1])))
+for i in [join(cur, x) for x in listdir('.') if not x.startswith('.') and not x=='installer.py']:
 	move(i, sd_root)
+	print('%s => %s'%(i, join(sd_root, split(i)[1])))
 move(cur, join(home, '.Trash'))
