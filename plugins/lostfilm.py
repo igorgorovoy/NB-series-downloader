@@ -11,9 +11,10 @@ class lostfilm(downloader):
 			return 
 		data = []
 		for title, link in rss:
-			try:
-				s, e, sn, en = search('([^(]*) \([^)]*\)\. ([^(]*) \([^(]*\(S(\d+)E?(\d+)?', title).groups(1)
-			except AttributeError:
+			s = search('([^(]*) \([^)]*\)\. ([^(]*) \([^(]*\(S(\d+)E?(\d+)?', title)
+			if s:
+				s, e, sn, en = s.groups(1)
+			else:
 				continue
 			data.append({'quality':title, 'series':s, 'episode':e, 'episode_number':en, 'series_number':sn, 'link':link, 'extension':'torrent'})
 		self.download(data, cookies=self.cookies)
