@@ -65,7 +65,7 @@ class Downloader:
         cmd = ['terminal-notifier', '-title', title, '-subtitle', subtitle, '-message', message]
         try:
             # пытаемся найти иконку расширения
-            icon = next(join(self.icons_dir, x) for x in listdir(self.icons_dir) if x.startswith(self.name))
+            icon = next(join(self.icons_dir, x) for x in listdir(self.icons_dir) if x.startswith(self.name.lower()))
             cmd = cmd + ['-appIcon', icon]
         except StopIteration:
             pass
@@ -93,7 +93,7 @@ class Downloader:
     def download_torrent(self, tfile, series, episode, number, _id):
         if self.notifier:
             # если есть terminal-notifier, уведомляем о начале загрузки
-            self.__notify(series, (episode if episode else number, 'Загрузка начата'), _id=_id)
+            self.__notify(series, (episode if episode else number), 'Загрузка начата', _id=_id)
         try:
             # загружаем и не сидируем
             check_output(['aria2c', tfile, '--seed-time=0'])
