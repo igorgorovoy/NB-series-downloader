@@ -7,6 +7,7 @@ from plistlib import load, dump
 import random
 import string
 from parser import Session
+from abc import ABCMeta
 
 
 class AttrDict(dict):
@@ -22,7 +23,7 @@ class AttrDict(dict):
         self[k] = v
 
 
-class Downloader:
+class Downloader(metaclass=ABCMeta):
     def __init__(self):
         # проверяем есть ли уведомлятор
         if isfile('/usr/local/bin/terminal-notifier'):
@@ -62,17 +63,18 @@ class Downloader:
         chdir(self.series_dir)
 
     def __notify(self, title, subtitle, message='', _id=''):
-        cmd = ['terminal-notifier', '-title', title, '-subtitle', subtitle, '-message', message, '-execute', '/usr/local/bin/python3 "{script}" "{path_to_series}"'.format(script=join(self.root_dir, 'play.py'), path_to_series=join(self.series_dir, '%s[%s]'%(title, self.name)))]
-        print(cmd)
+        cmd = ['terminal-notifier', '-title', title, '-subtitle', subtitle, '-message', message]
         try:
             # пытаемся найти иконку расширения
             icon = next(join(self.icons_dir, x) for x in listdir(self.icons_dir) if x.startswith(self.name.lower()))
-            cmd = cmd + ['-appIcon', icon]
+            cmd += ['-appIcon', icon]
         except StopIteration:
             pass
         if _id:
             # идентификатор здесь для замены уведомления о загрузке на то что загрузка окончена, вместо создания двух
-            cmd = cmd + ['-group', _id]
+            cmd += ['-group', _id]
+        if message == 'Загрузка закончена':
+            cmd += ['-execute', '/usr/local/bin/python3 "{script}" "{path_to_series}"'.format(script=join(self.root_dir, 'play.py'), path_to_series=join(self.series_dir, '%s[%s]'%(title, self.name)))]
         check_output(cmd)
 
     def __save(self):
