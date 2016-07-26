@@ -62,7 +62,8 @@ class Downloader:
         chdir(self.series_dir)
 
     def __notify(self, title, subtitle, message='', _id=''):
-        cmd = ['terminal-notifier', '-title', title, '-subtitle', subtitle, '-message', message]
+        cmd = ['terminal-notifier', '-title', title, '-subtitle', subtitle, '-message', message, '-execute', '/usr/local/bin/python3 "{script}" "{path_to_series}"'.format(script=join(self.root_dir, 'play.py'), path_to_series=join(self.series_dir, '%s[%s]'%(title, self.name)))]
+        print(cmd)
         try:
             # пытаемся найти иконку расширения
             icon = next(join(self.icons_dir, x) for x in listdir(self.icons_dir) if x.startswith(self.name.lower()))
